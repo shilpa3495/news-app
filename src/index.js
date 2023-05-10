@@ -1,17 +1,55 @@
+
 import React from 'react';
+import Header from './components/header/Header.js';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import store from './utils/store';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import Bookmark from './components/bookmark/Bookmark';
+import Home from './components/home/Home';
+import News from './components/news/News';
+import "./index.css"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const AppLayout = () => {
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <Header />
+        <div className='app-layout-container'>
+          <Outlet />
+        </div>
+      </div>
+    </Provider>
+  );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+
+const appRouter = createBrowserRouter(
+  [{
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/bookmark",
+        element: <Bookmark />
+      },
+      {
+        path: "/",
+        element: <Home />
+      },
+      {
+        path: "/news/:sourceName",
+        element: <News />
+      },
+    ]
+  }
+
+
+  ]
+)
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<RouterProvider router={appRouter} />);

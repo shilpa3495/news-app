@@ -1,0 +1,1 @@
+export const baseURL = "https://newsapi.org/v2/everything?q=tesla&from=2023-04-15&sortBy=publishedAt&apiKey=38e2d8b8a34c47cfaabca26f97e4ff35"
