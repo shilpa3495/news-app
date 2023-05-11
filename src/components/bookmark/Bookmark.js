@@ -2,8 +2,6 @@ import NewsCard from "../home/NewsCard";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import "./bookmark.css";
-
 const Bookmark = () => {
   const news = useSelector((state) => state.news.news);
 
