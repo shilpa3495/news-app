@@ -6,7 +6,6 @@ import "./news.css";
 
 const News = () => {
   const news = useSelector((state) => state.news.news);
-  console.log(news);
   const { sourceName } = useParams();
   const selectedNews = news.find((news) => news?.source.name === sourceName);
   return (

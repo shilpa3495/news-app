@@ -7,6 +7,7 @@ const NewsCard = ({ newsData, index, isBookmark }) => {
 
   const bookmarked = (e, index) => {
     e.preventDefault();
+    e.stopPropagation();
     if (newsData?.isBookmark) {
       dispatch(removeBookmark(index));
     } else {
